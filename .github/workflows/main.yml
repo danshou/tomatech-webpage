@@ -1,0 +1,13 @@
+name: Deploy Firebase Hosting
+on:
+  push:
+    branches: [ production ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Firebase set target
+        run: firebase target:apply hosting tomatech-6c10f tomatech-6c10f
+      - name: Firebase deploy
+        run: firebase deploy --only hosting:tomatech-6c10f --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TOMATECH_6C10F }} --non-interactive
