@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: sudo npm install --unsafe-perm -g firebase-tools && firebase -V
       - name: Firebase set target
         run: firebase target:apply hosting tomatech-6c10f tomatech-6c10f
       - name: Firebase deploy
